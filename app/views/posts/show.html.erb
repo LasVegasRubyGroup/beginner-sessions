@@ -1,0 +1,22 @@
+<h1><%= @post.title %></h1>
+<h2>by <%= @post.author %> on <%= @post.created_at %></h2>
+<p><%= @post.content %></p>
+
+<h2>Comments</h2>
+<p>The wonderful things our readers say...</p>
+
+<%= form_for [@post, @comment] do |f| %>
+  <div>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <div>
+    <%= f.submit 'Do nothing!' %>
+  </div>
+<% end %>
+
+<%= render partial: @post.comments %>
